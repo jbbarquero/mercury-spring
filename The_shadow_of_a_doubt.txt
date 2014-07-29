@@ -1,0 +1,5 @@
+· Mongo vs MongoClient (why Spring doesn't support directly the latter, what is the current version)
+· I'd like to have Long as IDs (actually, I can't say really why, but at least I want to know how to do it)
+· How Spring Data MongoDB (and consequently JPA and so on) really works.
+· What about transactions? Specially Spring test transactions that performs rollback
+	THERE IS NO TRANSACTIONS BY DESIGN IN MONGO
