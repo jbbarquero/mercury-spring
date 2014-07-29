@@ -9,14 +9,15 @@ import java.util.Date;
  */
 public class Event {
 
-    private Long id;
+    private String id;
+    private Integer codeType;
     private String data;
     private Date date;
     
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getData() {
@@ -31,11 +32,17 @@ public class Event {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-    
-    @Override
+    public Integer getCodeType() {
+		return codeType;
+	}
+	public void setCodeType(Integer codeType) {
+		this.codeType = codeType;
+	}
+	@Override
     public String toString() {
     	return com.google.common.base.Objects.toStringHelper(this)
     			.addValue(this.id)
+    			.addValue(codeType)
     			.addValue(this.data)
     			.addValue(this.date)
     			.toString();

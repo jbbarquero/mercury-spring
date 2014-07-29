@@ -3,19 +3,24 @@ package com.malsolo.mercury.spring.domain;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class Alarm {
 
-    private Long id;
+	@Id
+	private String id;
     private String data;
     private Date date;
     //@DBRef
     private Type type;
     private List<Event> events;
     
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getData() {

@@ -3,7 +3,8 @@ package com.malsolo.mercury.spring.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,6 +19,11 @@ import com.mongodb.MongoClient;
 @Repository
 public class TypeRepositoryMongoDbJavaDriverImpl implements TypeRepository {
 	
+	final Logger logger = LoggerFactory.getLogger(TypeRepositoryMongoDbJavaDriverImpl.class);
+	
+	private static final String ID_FIELD = "_id";
+	private static final String COLLECTION_NAME = Type.class.getSimpleName().toLowerCase();
+
 	@Autowired
 	String databaseName;
 	
@@ -30,8 +36,9 @@ public class TypeRepositoryMongoDbJavaDriverImpl implements TypeRepository {
 	@Override
 	public void save(Type type) {
 		DB db = mongoClient.getDB(databaseName);
-		DBCollection types = db.getCollection(Type.class.getTypeName());
-		BasicDBObject newType = new BasicDBObject("code", type.getCode())
+		DBCollection types = db.getCollection(COLLECTION_NAME);
+		BasicDBObject newType = new BasicDBObject()
+			.append("code", type.getCode())
 			.append("description", type.getDescription())
 			.append("active", type.getActive());
 		types.save(newType);
@@ -41,10 +48,10 @@ public class TypeRepositoryMongoDbJavaDriverImpl implements TypeRepository {
 	 * @see com.malsolo.mercury.spring.repository.TypeRepository#findById(java.lang.Long)
 	 */
 	@Override
-	public Type findById(Long id) {
+	public Type findById(String id) {
 		DB db = mongoClient.getDB(databaseName);
-		DBCollection types = db.getCollection(Type.class.getTypeName());
-		BasicDBObject query = new BasicDBObject("_id", new ObjectId(id.toString()));
+		DBCollection types = db.getCollection(COLLECTION_NAME);
+		BasicDBObject query = new BasicDBObject(ID_FIELD, id);
 		DBCursor cursor = types.find(query);
 		if (cursor.hasNext()) {
 			return createFromDocument(cursor.next());
@@ -58,7 +65,7 @@ public class TypeRepositoryMongoDbJavaDriverImpl implements TypeRepository {
 	@Override
 	public List<Type> findAll() {
 		DB db = mongoClient.getDB(databaseName);
-		DBCollection types = db.getCollection(Type.class.getTypeName());
+		DBCollection types = db.getCollection(COLLECTION_NAME);
 		DBCursor cursor = types.find();
 		List<Type> result = new ArrayList<>();
 		while (cursor.hasNext()) {
@@ -67,12 +74,25 @@ public class TypeRepositoryMongoDbJavaDriverImpl implements TypeRepository {
 		return result;
 	}
 	
+	@Override
+	public Type findByCode(Integer code) {
+		DB db = mongoClient.getDB(databaseName);
+		DBCollection types = db.getCollection(COLLECTION_NAME);
+		BasicDBObject query = new BasicDBObject("code", code);
+		DBCursor cursor = types.find(query);
+		if (cursor.hasNext()) {
+			return createFromDocument(cursor.next());
+		}
+		return null;
+	}
+
 	private Type createFromDocument(DBObject dbObject) {
+		logger.debug("Creating Type from document {} ", (dbObject != null ? dbObject.toString() : "null"));
 		Type type = new Type();
-		type.setId(Long.valueOf(dbObject.get("_id").toString()));
-		type.setCode(Integer.valueOf(dbObject.get("_id").toString()));
-		type.setDescription(dbObject.get("_id").toString());
-		type.setActive(Boolean.valueOf(dbObject.get("_id").toString()));
+		type.setId(dbObject.get(ID_FIELD).toString());
+		type.setCode(Integer.valueOf(dbObject.get("code").toString()));
+		type.setDescription(dbObject.get("description").toString());
+		type.setActive(Boolean.valueOf(dbObject.get("active").toString()));
 		return type;
 	}
 

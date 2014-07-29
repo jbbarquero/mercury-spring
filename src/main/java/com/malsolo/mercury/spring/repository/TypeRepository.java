@@ -8,7 +8,9 @@ public interface TypeRepository {
 
 	public abstract void save(Type type);
 
-	public abstract Type findById(Long id);
+	public abstract Type findByCode(Integer code);
+
+	public abstract Type findById(String id);
 
 	public abstract List<Type> findAll();
 

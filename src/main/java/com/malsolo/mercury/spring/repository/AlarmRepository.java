@@ -8,7 +8,7 @@ public interface AlarmRepository {
 
 	public abstract void save(Alarm alarm);
 
-	public abstract Alarm findById(Long id);
+	public abstract Alarm findById(String id);
 
 	public abstract List<Alarm> findAll();
 

@@ -4,14 +4,14 @@ package com.malsolo.mercury.spring.domain;
 
 public class Type {
 
-    private Long id;
+    private String id;
     private Integer code;
     private String description;
     private Boolean active;
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public Integer getCode() {

@@ -22,14 +22,15 @@ public class AlarmRepositoryMongoTemplateImpl implements AlarmRepository {
 	 */
 	@Override
 	public void save(Alarm alarm) {
-		mongoOperations.save(alarm);
+//		mongoOperations.save(alarm);
+		mongoOperations.insert(alarm);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.malsolo.mercury.spring.repository.AlarmRepository#findById(java.lang.Long)
 	 */
 	@Override
-	public Alarm findById(Long id) {
+	public Alarm findById(String id) {
 		return mongoOperations.findOne(query(where("id").is(id)), Alarm.class);
 		
 	}
