@@ -31,8 +31,8 @@ public class EventRepositoryTest extends AbstractIntegrationTest {
 
 	@Test
 	public void testFindById() {
-		Event event = eventRepository.findOne("1");
-//		assertNotNull(event);
+		Event event = eventRepository.findOne(eventsIds.get(0));
+		assertNotNull(event);
 		logger.debug("{}", event);
 	}
 

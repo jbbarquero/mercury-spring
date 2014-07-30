@@ -31,8 +31,8 @@ public class AlarmRepositoryTest extends AbstractIntegrationTest {
 
 	@Test
 	public void testFindById() {
-		Alarm alarm = alarmRepository.findById("1");
-//		assertNotNull(alarm);
+		Alarm alarm = alarmRepository.findById(alarmsIds.get(0));
+		assertNotNull(alarm);
 		logger.debug("{}", alarm);
 	}
 
@@ -40,7 +40,7 @@ public class AlarmRepositoryTest extends AbstractIntegrationTest {
 	public void testFindAll() {
 		List<Alarm> alarmas = alarmRepository.findAll();
 		assertNotNull(alarmas);
-		assertTrue(alarmas.size() > 0);
+		assertTrue(alarmas.size() >= alarmsIds.size());
 		logger.debug("{} alarmas", alarmas.size());
 	}
 

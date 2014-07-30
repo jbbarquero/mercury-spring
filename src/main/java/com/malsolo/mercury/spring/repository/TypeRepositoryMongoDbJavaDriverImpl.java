@@ -3,6 +3,7 @@ package com.malsolo.mercury.spring.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,7 @@ public class TypeRepositoryMongoDbJavaDriverImpl implements TypeRepository {
 	public Type findById(String id) {
 		DB db = mongoClient.getDB(databaseName);
 		DBCollection types = db.getCollection(COLLECTION_NAME);
-		BasicDBObject query = new BasicDBObject(ID_FIELD, id);
+		BasicDBObject query = new BasicDBObject(ID_FIELD, new ObjectId(id));
 		DBCursor cursor = types.find(query);
 		if (cursor.hasNext()) {
 			return createFromDocument(cursor.next());

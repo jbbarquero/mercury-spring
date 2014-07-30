@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,8 +30,8 @@ public class TypeRepositoryTest extends AbstractIntegrationTest {
 	
 	@Test
 	public void testFindById() {
-		Type type = typeRepository.findById(new ObjectId().toString());
-//		assertNotNull(type);
+		Type type = typeRepository.findById(typesIds.get(0));
+		assertNotNull(type);
 		logger.debug("{}", type);
 	}
 
@@ -40,7 +39,7 @@ public class TypeRepositoryTest extends AbstractIntegrationTest {
 	public void testFindAll() {
 		List<Type> types = typeRepository.findAll();
 		assertNotNull(types);
-		assertTrue(types.size() > 0);
+		assertTrue(types.size() >= typesIds.size());
 		logger.debug("{} tipos", types.size());
 	}
 	
