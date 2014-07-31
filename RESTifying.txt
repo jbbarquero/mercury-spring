@@ -1,0 +1,44 @@
+RESTifying:
+
+· Spring Data configuration at root (must be loaded before web context)
+· DispatcherServlet (with the special RepositoryRestExporterServlet or the standard DispatcherServlet with Spring Data REST config)
+· MVC components: with @Import or by extending RepositoryRestMvcConfiguration
+
+From spring-data-rest-example:
+1. Add the DispatcherServlet
+
+Spring Data REST is buildt on top of SpringMVC, so you need to bootstrap Spring MVC that can be done in this way if you're using a Servlet 3.0 container:
+
+See RestExporterWebInitializer
+
+See 16.2 The DispatcherServlet (http://docs.spring.io/spring/docs/4.0.6.RELEASE/spring-framework-reference/htmlsingle/#mvc-servlet)
+
+"The DispatcherServlet is an actual Servlet [...]. In a Servlet 3.0+ environment, you also have the option of configuring the Servlet container programmatically [...]. WebApplicationInitializer is an interface provided by Spring MVC that ensures your code-based configuration is detected and automatically used to initialize any Servlet 3 container" (you can also use the abstract base class AbstractDispatcherServletInitializer or AbstractAnnotationConfigDispatcherServletInitializer for a Java-based Spring configuration application)
+
+2. Starting the REST application
+
+See RestExporterWebInitializer
+
+- Bibliography
+· http://docs.spring.io/spring-data/rest/docs/2.1.2.RELEASE/reference/htmlsingle/#install-chapter
+· https://github.com/spring-projects/spring-data-rest/wiki/JPA-Repository-REST-Exporter
+· http://docs.spring.io/spring/docs/4.0.6.RELEASE/spring-framework-reference/htmlsingle/#mvc-container-config
+· https://github.com/spring-projects/rest-shell
+· https://github.com/spring-projects/spring-hateoas/blob/master/readme.md
+
+MERCURY-SPRING-0004: RESTifying
+
+- Previous changes:
+· Change the pom's packaging to WAR.
+· Renamed ApplicationConfiguration to MongoDbRepositoryConfiguration.
+
+- Bootstrap Spring MVC: 
+· spring-webmvc dependency (and a provided javax.servlet-api too)
+· spring-data-rest-webmvc dependency (seriously, -webmvc? :@)
+· RestExporterWebInitializer
+- Starting the REST application
+· RestExporterWebInitializer
+
+- Minor changes:
+Updating documents (txt)
+

@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.malsolo.mercury.spring.ApplicationConfiguration;
+import com.malsolo.mercury.spring.MongoDbRepositoryConfiguration;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -28,7 +28,7 @@ import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ApplicationConfiguration.class })
+@ContextConfiguration(classes = { MongoDbRepositoryConfiguration.class })
 public abstract class AbstractIntegrationTest {
 	
 	final Logger logger = LoggerFactory.getLogger(this.getClass());

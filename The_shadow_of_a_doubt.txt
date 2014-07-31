@@ -1,5 +1,52 @@
 · Mongo vs MongoClient (why Spring doesn't support directly the latter, what is the current version)
 · I'd like to have Long as IDs (actually, I can't say really why, but at least I want to know how to do it)
 · How Spring Data MongoDB (and consequently JPA and so on) really works.
+Piece of cake: it creates a SimpleMongoRepository proxy around each interface, that at the end uses MongoOperations (actually, its Primary implementation: MongoTemplate)
+Thread [main] (Suspended)	
+	MongoTemplate.save(Object, String) line: 826	
+	SimpleMongoRepository<T,ID>.save(S) line: 72	
+	NativeMethodAccessorImpl.invoke0(Method, Object, Object[]) line: not available [native method]	
+	NativeMethodAccessorImpl.invoke(Object, Object[]) line: 62	
+	DelegatingMethodAccessorImpl.invoke(Object, Object[]) line: 43	
+	Method.invoke(Object, Object...) line: 483	
+	RepositoryFactorySupport$QueryExecutorMethodInterceptor.executeMethodOn(Object, Method, Object[]) line: 405	
+	RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(MethodInvocation) line: 390	
+	RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(MethodInvocation) line: 344	
+	ReflectiveMethodInvocation.proceed() line: 179	
+	JdkDynamicAopProxy.invoke(Object, Method, Object[]) line: 207	
+	$Proxy25.save(Object) line: not available	
+	EventRepositoryTest.testSave() line: 29	
+	NativeMethodAccessorImpl.invoke0(Method, Object, Object[]) line: not available [native method]	
+	NativeMethodAccessorImpl.invoke(Object, Object[]) line: 62	
+	DelegatingMethodAccessorImpl.invoke(Object, Object[]) line: 43	
+	Method.invoke(Object, Object...) line: 483	
+	FrameworkMethod$1.runReflectiveCall() line: 47	
+	FrameworkMethod$1(ReflectiveCallable).run() line: 12	
+	FrameworkMethod.invokeExplosively(Object, Object...) line: 44	
+	InvokeMethod.evaluate() line: 17	
+	RunBefores.evaluate() line: 26	
+	RunBeforeTestMethodCallbacks.evaluate() line: 74	
+	RunAfters.evaluate() line: 27	
+	RunAfterTestMethodCallbacks.evaluate() line: 83	
+	TestWatcher$1.evaluate() line: 55	
+	RunRules.evaluate() line: 20	
+	SpringRepeat.evaluate() line: 72	
+	SpringJUnit4ClassRunner.runChild(FrameworkMethod, RunNotifier) line: 233	
+	SpringJUnit4ClassRunner.runChild(Object, RunNotifier) line: 87	
+	ParentRunner$3.run() line: 238	
+	ParentRunner$1.schedule(Runnable) line: 63	
+	SpringJUnit4ClassRunner(ParentRunner<T>).runChildren(RunNotifier) line: 236	
+	ParentRunner<T>.access$000(ParentRunner, RunNotifier) line: 53	
+	ParentRunner$2.evaluate() line: 229	
+	RunBeforeTestClassCallbacks.evaluate() line: 61	
+	RunAfterTestClassCallbacks.evaluate() line: 71	
+	SpringJUnit4ClassRunner(ParentRunner<T>).run(RunNotifier) line: 309	
+	SpringJUnit4ClassRunner.run(RunNotifier) line: 176	
+	JUnit4TestMethodReference(JUnit4TestReference).run(TestExecution) line: 50	
+	TestExecution.run(ITestReference[]) line: 38	
+	RemoteTestRunner.runTests(String[], String, TestExecution) line: 459	
+	RemoteTestRunner.runTests(TestExecution) line: 675	
+	RemoteTestRunner.run() line: 382	
+	RemoteTestRunner.main(String[]) line: 192	
 · What about transactions? Specially Spring test transactions that performs rollback
 	THERE IS NO TRANSACTIONS BY DESIGN IN MONGO

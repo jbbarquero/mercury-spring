@@ -15,7 +15,7 @@ import com.mongodb.WriteConcern;
 @Configuration
 @ComponentScan
 @EnableMongoRepositories(basePackageClasses = {AlarmRepository.class}/*, excludeFilters = {@Filter(type = FilterType.ASSIGNABLE_TYPE, value = Repository.class)}*/)
-public class ApplicationConfiguration {
+public class MongoDbRepositoryConfiguration {
 	
 	private static final String MONGODB_DATABASE_NAME = "mercury";
 	
