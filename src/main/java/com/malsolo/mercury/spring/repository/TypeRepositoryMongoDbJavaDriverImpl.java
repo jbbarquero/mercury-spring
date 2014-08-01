@@ -17,7 +17,7 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
-@Repository
+@Repository("typeRepositoryMongoDbJavaDriver")
 public class TypeRepositoryMongoDbJavaDriverImpl implements TypeRepository {
 	
 	final Logger logger = LoggerFactory.getLogger(TypeRepositoryMongoDbJavaDriverImpl.class);
@@ -43,6 +43,7 @@ public class TypeRepositoryMongoDbJavaDriverImpl implements TypeRepository {
 			.append("description", type.getDescription())
 			.append("active", type.getActive());
 		types.save(newType);
+		type.setId(newType.getString("_id"));
 	}
 	
 	/* (non-Javadoc)

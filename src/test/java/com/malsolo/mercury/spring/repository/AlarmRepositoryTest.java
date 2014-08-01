@@ -1,6 +1,7 @@
 package com.malsolo.mercury.spring.repository;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
@@ -26,7 +27,11 @@ public class AlarmRepositoryTest extends AbstractIntegrationTest {
 
 	@Test
 	public void testSave() {
-		alarmRepository.save(getNewTransientAlarm());
+		Alarm alarm = getNewTransientAlarm();
+		assertNull(alarm.getId());
+		alarmRepository.save(alarm);
+		assertNotNull(alarm.getId());
+		alarmsIds.add(alarm.getId());
 	}
 
 	@Test

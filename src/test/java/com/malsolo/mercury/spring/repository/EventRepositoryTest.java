@@ -1,6 +1,7 @@
 package com.malsolo.mercury.spring.repository;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
@@ -26,7 +27,11 @@ public class EventRepositoryTest extends AbstractIntegrationTest {
 
 	@Test
 	public void testSave() {
-		eventRepository.save (getNewTransientEvent());
+		Event event = getNewTransientEvent();
+		assertNull(event.getId());
+		eventRepository.save (event);
+		assertNotNull(event.getId());
+		eventsIds.add(event.getId());
 	}
 
 	@Test
@@ -48,7 +53,7 @@ public class EventRepositoryTest extends AbstractIntegrationTest {
 
 	public static Event getNewTransientEvent() {
 		Event event = new Event();
-		event.setId("1");event.setCodeType(1);
+		event.setCodeType(1);
 		event.setData("data");
 	    event.setDate(new Date());
 		return event;

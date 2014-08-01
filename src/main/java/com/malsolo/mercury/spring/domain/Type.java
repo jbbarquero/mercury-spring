@@ -5,9 +5,11 @@ package com.malsolo.mercury.spring.domain;
 public class Type {
 
     private String id;
+    //@Indexed(unique = true) it fails when creating Alarms without Type due to a 11000 code, duplicate: null :|
     private Integer code;
     private String description;
     private Boolean active;
+    
 	public String getId() {
 		return id;
 	}
