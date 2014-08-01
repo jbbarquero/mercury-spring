@@ -13,5 +13,5 @@ public interface EventRepository extends PagingAndSortingRepository<Event, Strin
 	public List<Event> findByCodeType(@Param("codeType") Integer codeType);
 
 	public List<Event> findByDate(@Param("date") Date date);
-
+	
 }
