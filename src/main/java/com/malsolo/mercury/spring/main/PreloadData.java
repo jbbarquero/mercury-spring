@@ -10,12 +10,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.malsolo.mercury.spring.MongoDbRepositoryConfiguration;
 import com.malsolo.mercury.spring.domain.Type;
+import com.malsolo.mercury.spring.repository.MongoDbRepositoryConfiguration;
 import com.malsolo.mercury.spring.repository.TypeRepository;
 
 @Component
-@Main
+//@Main
 public class PreloadData {
 	
 	final private static Logger logger = LoggerFactory.getLogger(PreloadData.class);
