@@ -6,7 +6,7 @@ import com.malsolo.mercury.spring.domain.Type;
 
 public interface TypeRepository {
 
-	public abstract void save(Type type);
+	public abstract Type save(Type type);
 
 	public abstract Type findByCode(Integer code);
 

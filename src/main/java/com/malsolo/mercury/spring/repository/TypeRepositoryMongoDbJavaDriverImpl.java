@@ -35,7 +35,7 @@ public class TypeRepositoryMongoDbJavaDriverImpl implements TypeRepository {
 	 * @see com.malsolo.mercury.spring.repository.TypeRepository#save(com.malsolo.mercury.spring.domain.Type)
 	 */
 	@Override
-	public void save(Type type) {
+	public Type save(Type type) {
 		DB db = mongoClient.getDB(databaseName);
 		DBCollection types = db.getCollection(COLLECTION_NAME);
 		BasicDBObject newType = new BasicDBObject()
@@ -44,6 +44,7 @@ public class TypeRepositoryMongoDbJavaDriverImpl implements TypeRepository {
 			.append("active", type.getActive());
 		types.save(newType);
 		type.setId(newType.getString("_id"));
+		return createFromDocument(newType);
 	}
 	
 	/* (non-Javadoc)

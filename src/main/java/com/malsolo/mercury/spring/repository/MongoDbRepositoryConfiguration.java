@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.WriteConcern;
 
@@ -24,15 +23,15 @@ public class MongoDbRepositoryConfiguration {
 	}
 	
     @Bean
-    public Mongo mongo() throws Exception {
-        Mongo mongo = new MongoClient();
-        mongo.setWriteConcern(WriteConcern.SAFE); //I asume is Acknowledged (w:1). See http://docs.mongodb.org/manual/core/write-concern/
-        return mongo;
+    public MongoClient mongoClient() throws Exception {
+        MongoClient mongoClient = new MongoClient();
+        mongoClient.setWriteConcern(WriteConcern.SAFE); //I asume is Acknowledged (w:1). See http://docs.mongodb.org/manual/core/write-concern/
+        return mongoClient;
     }
 	
     @Bean
 	public MongoOperations mongoTemplate() throws Exception {
-		return new MongoTemplate(mongo(), databaseName());
+		return new MongoTemplate(mongoClient(), databaseName());
 	}
 
 }
