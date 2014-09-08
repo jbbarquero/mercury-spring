@@ -1,4 +1,4 @@
-package com.malsolo.mercury.spring;
+package com.malsolo.mercury.spring.events;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -9,7 +9,7 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
-import com.malsolo.mercury.spring.repository.MongoDbRepositoryConfiguration;
+import com.malsolo.mercury.spring.events.repository.MongoDbRepositoryConfiguration;
 
 public class RestExporterWebInitializer implements WebApplicationInitializer {
 

@@ -1,4 +1,4 @@
-package com.malsolo.mercury.spring.repository;
+package com.malsolo.mercury.spring.events.repository;
 
 import java.util.Date;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.malsolo.mercury.spring.domain.Event;
+import com.malsolo.mercury.spring.events.domain.Event;
 
 public interface EventRepository extends PagingAndSortingRepository<Event, String> {
 	

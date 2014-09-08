@@ -1,4 +1,4 @@
-package com.malsolo.mercury.spring.domain;
+package com.malsolo.mercury.spring.events.domain;
 
 
 

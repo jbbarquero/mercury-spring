@@ -1,4 +1,4 @@
-package com.malsolo.mercury.spring.repository;
+package com.malsolo.mercury.spring.events.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.malsolo.mercury.spring.domain.Type;
+import com.malsolo.mercury.spring.events.domain.Type;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;

@@ -1,4 +1,4 @@
-package com.malsolo.mercury.spring.repository;
+package com.malsolo.mercury.spring.events.repository;
 
 import java.util.ArrayList;
 import java.util.Date;

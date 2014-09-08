@@ -1,4 +1,4 @@
-package com.malsolo.mercury.spring.main;
+package com.malsolo.mercury.spring.events.main;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

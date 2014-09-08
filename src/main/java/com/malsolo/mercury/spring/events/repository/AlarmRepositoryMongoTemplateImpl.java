@@ -1,4 +1,4 @@
-package com.malsolo.mercury.spring.repository;
+package com.malsolo.mercury.spring.events.repository;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Repository;
 
-import com.malsolo.mercury.spring.domain.Alarm;
+import com.malsolo.mercury.spring.events.domain.Alarm;
 
 @Repository
 public class AlarmRepositoryMongoTemplateImpl implements AlarmRepository {

@@ -1,4 +1,4 @@
-package com.malsolo.mercury.spring.repository;
+package com.malsolo.mercury.spring.events.repository;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.malsolo.mercury.spring.domain.Type;
+import com.malsolo.mercury.spring.events.domain.Type;
 
 public class TypeRepositoryTest extends AbstractIntegrationTest {
 	

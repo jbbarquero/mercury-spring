@@ -1,4 +1,4 @@
-package com.malsolo.mercury.spring;
+package com.malsolo.mercury.spring.events;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;

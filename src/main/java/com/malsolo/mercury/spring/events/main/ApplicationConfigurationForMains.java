@@ -1,4 +1,4 @@
-package com.malsolo.mercury.spring.main;
+package com.malsolo.mercury.spring.events.main;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

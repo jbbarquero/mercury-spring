@@ -1,11 +1,11 @@
-package com.malsolo.mercury.spring;
+package com.malsolo.mercury.spring.events;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.ResourceProcessor;
 
-import com.malsolo.mercury.spring.domain.Type;
+import com.malsolo.mercury.spring.events.domain.Type;
 
 @Configuration
 public class RestConfiguration {

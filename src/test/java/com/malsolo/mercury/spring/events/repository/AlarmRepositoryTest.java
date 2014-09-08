@@ -1,4 +1,4 @@
-package com.malsolo.mercury.spring.repository;
+package com.malsolo.mercury.spring.events.repository;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.malsolo.mercury.spring.domain.Alarm;
+import com.malsolo.mercury.spring.events.domain.Alarm;
 
 public class AlarmRepositoryTest extends AbstractIntegrationTest {
 	

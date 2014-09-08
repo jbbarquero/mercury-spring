@@ -1,8 +1,8 @@
-package com.malsolo.mercury.spring.repository;
+package com.malsolo.mercury.spring.events.repository;
 
 import java.util.List;
 
-import com.malsolo.mercury.spring.domain.Alarm;
+import com.malsolo.mercury.spring.events.domain.Alarm;
 
 public interface AlarmRepository {
 

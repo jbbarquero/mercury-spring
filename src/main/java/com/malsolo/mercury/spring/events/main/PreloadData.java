@@ -1,4 +1,4 @@
-package com.malsolo.mercury.spring.main;
+package com.malsolo.mercury.spring.events.main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.malsolo.mercury.spring.domain.Type;
-import com.malsolo.mercury.spring.repository.MongoDbRepositoryConfiguration;
-import com.malsolo.mercury.spring.repository.TypeRepository;
+import com.malsolo.mercury.spring.events.domain.Type;
+import com.malsolo.mercury.spring.events.repository.MongoDbRepositoryConfiguration;
+import com.malsolo.mercury.spring.events.repository.TypeRepository;
 
 @Component
 //@Main
